@@ -3589,7 +3589,7 @@
 		-moz-align-items: center;
 		-webkit-align-items: center;
 		-ms-align-items: center;
-		align-items: center;
+		align-items: top;
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -3627,9 +3627,9 @@
 		#banner h1 {
 			font-size: 7em;
 			line-height: 1.1;
-			font-family: "Lobster", cursive;
+			font-family: "Pacifico", cursive;
 			margin-bottom: .25em;
-			color: rgba(255, 255, 255, 0.75);
+			color: rgba(201, 169, 169, 0.75);
 			text-shadow: -2px -2px 0 rgba(0, 0, 0, 0.125);
 			text-transform: none;
 		}
@@ -4429,3 +4429,20 @@
 			}
 
 		}
+		/* Estilos para la sección en la parte superior */
+.top-section {
+    background-color: beige; /* Fondo beige */
+    color: black !important; /* Texto negro */
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Centrar el texto */
+    position: sticky; /* Mantener la sección fija al hacer scroll */
+    top: 0; /* Posición en la parte superior */
+    z-index: 1000; /* Asegurar que esté sobre otros elementos */
+}
+
+/* Estilos para el h1 dentro de la sección */
+.top-section h1 {
+    margin: 0; /* Remover el margen por defecto */
+    font-size: 2em; /* Aumentar el tamaño de la fuente */
+    visibility: visible; /* Asegurarse de que sea visible */
+}

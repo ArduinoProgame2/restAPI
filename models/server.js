@@ -4,6 +4,11 @@ import { fileURLToPath } from 'url';
 import hbs from 'hbs';
 import cors from 'cors'; // const cors = require('cors');
 import dotenv from 'dotenv';
+import usuarios  from '../routes/users.js';
+import paginas from '../routes/paginas.js';
+import esp32 from '../routes/esp32route.js';
+import consulta from '../routes/consulta.js';
+
 // Obtener __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -42,35 +47,17 @@ class Server {
 
         // Directorio publico
         this.app.use(express.static('public'));
-        
+        // Middleware para procesar datos de formularios POST (URL encoded)
+        this.app.use(express.urlencoded({ extended: true }));
+        // Middleware para manejar JSON en el cuerpo de las solicitudes
+        this.app.use(express.json());
     }
     routes() {
-                // this.app.use(this.paths.auth, require('../routes/auth'));
-        this.app.get('/', (req, res) => {
-                res.render("home",{
-                nombre:'Ing.Pablo Estrella',
-                titulo:'Road Trip'
-            });
-        });
-        this.app.get('/elements', (req, res) => {
-            res.render("elements",{
-            nombre:'Ing.Pablo Estrella',
-            titulo:'Road Trip'
-        });
-    });
-    this.app.get('/generic', (req, res) => {
-        res.render("generic",{
-        nombre:'Ing.Pablo Estrella',
-        titulo:'Road Trip'
-    });
-});
-        this.app.get('/api', (req, res) => {
-            res.json({ 
-                ok: true,
-                mensaje: 'Get API'});
-
-            
-        });
+        // this.app.use(this.paths.auth, require('../routes/auth'));
+        this.app.use('/',paginas);
+        this.app.use('/api', usuarios);
+        this.app.use('/esp32', esp32);
+        this.app.use('/', consulta);
     }
     
     listen() {

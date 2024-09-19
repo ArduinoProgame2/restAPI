@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Datos</title>
+    
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+            <!-- Header -->
+                {{> header }}
+            <!-- Nav -->
+			{{> nav }}
+            <div class="container mt-5">
+			<section id="banner" ><!--class="small-img" data-bg="banner.jpg">-->
+				
+				<div class="inner top-section">
+					<header>
+						<h1>This is API Rest</h1>
+					</header>
+				</div>
+				
+				<!--<a href="#one" class="more">Learn More</a>-->
+			</section>	
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h2>Formulario de Consulta</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="/submit" method="POST">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre:</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="correo" class="form-label">Correo:</label>
+                                <input type="email" class="form-control" id="correo" name="correo" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña:</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="apikey" class="form-label">API Key:</label>
+                                <input type="text" class="form-control" id="apikey" name="apikey" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+
+                {{#if message}}
+                    <div class="alert alert-success mt-4" role="alert">
+                        <h4 class="alert-heading">Respuesta del servidor:</h4>
+                        <!--<p>{{message}}</p>-->
+                        <p><strong>Nombre:</strong> {{message.name}}</p>
+                        <p><strong>Correo:</strong> {{message.email}}</p>
+                        <p><strong>Contraseña:</strong> {{message.password}}</p>
+                        <p><strong>API Key:</strong> {{message.apikey}}</p>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+</body>
+</html>
