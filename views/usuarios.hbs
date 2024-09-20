@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{titulo}}</title>
+    <style>
+        /* Estilos para centrar el contenido en la pantalla */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        
+        /* Estilos para la tarjeta */
+        .card {
+            background-color: DarkTurquoise; /* Fondo de la tarjeta en color DarkTurquoise */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            color: black; /* Color de texto negro */
+        }
+        
+        .card h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .card p {
+            font-size: 16px;
+            color: black; /* Asegúrate de que el texto en los párrafos sea negro */
+            margin: 10px 0;
+        }
+
+        .card .nombre {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 15px;
+            color: black; /* Texto negro también en esta clase */
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>{{titulo}}</h1>
+        <p><strong>Mensaje:</strong> {{mensaje}}</p>
+        <p><strong>Verbo:</strong> {{verbo}}</p>
+        <p class="nombre"><strong>Nombre:</strong> {{nombre}}</p>
+    </div>
+</body>
+</html>

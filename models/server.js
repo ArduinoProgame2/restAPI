@@ -4,10 +4,7 @@ import { fileURLToPath } from 'url';
 import hbs from 'hbs';
 import cors from 'cors'; // const cors = require('cors');
 import dotenv from 'dotenv';
-import usuarios  from '../routes/users.js';
-import paginas from '../routes/paginas.js';
-import esp32 from '../routes/esp32route.js';
-import consulta from '../routes/consulta.js';
+import usuarios  from '../routes/usuarios.js';
 
 // Obtener __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);
@@ -54,10 +51,8 @@ class Server {
     }
     routes() {
         // this.app.use(this.paths.auth, require('../routes/auth'));
-        this.app.use('/',paginas);
-        this.app.use('/api', usuarios);
-        this.app.use('/esp32', esp32);
-        this.app.use('/', consulta);
+        this.app.use('/', usuarios);
+       
     }
     
     listen() {
