@@ -12,9 +12,6 @@ usuarios.get('/post', postUsuarios);
 //Ruta PUT para '/api'
 usuarios.get('/put', putUsuarios);
 
-//Ruta PUT para '/api'
-usuarios.get('/put', putUsuarios);
-
 // Ruta DELETE para '/api'
 usuarios.get('/delete', deleteUsuario);
 
