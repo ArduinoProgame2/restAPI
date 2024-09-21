@@ -5,27 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{titulo}}</title>
     <style>
-        /* Estilos para centrar el contenido en la pantalla */
+        /* Estilos para el fondo de pantalla con una imagen */
         body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-image: url('/images/ballena.jpg'); /* Ruta a tu imagen de fondo */
+            background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
         }
         
         /* Estilos para la tarjeta */
         .card {
-            background-color: DarkTurquoise; /* Fondo de la tarjeta en color DarkTurquoise */
+            background-color: CadetBlue;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
             max-width: 400px;
             width: 100%;
             text-align: center;
-            color: black; /* Color de texto negro */
+            color: black;
         }
         
         .card h1 {
@@ -35,7 +39,7 @@
         
         .card p {
             font-size: 16px;
-            color: black; /* Asegúrate de que el texto en los párrafos sea negro */
+            color: black;
             margin: 10px 0;
         }
 
@@ -43,7 +47,7 @@
             font-weight: bold;
             font-size: 18px;
             margin-top: 15px;
-            color: black; /* Texto negro también en esta clase */
+            color: black;
         }
     </style>
 </head>
@@ -56,3 +60,4 @@
     </div>
 </body>
 </html>
+

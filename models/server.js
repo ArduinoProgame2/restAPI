@@ -4,7 +4,9 @@ import { fileURLToPath } from 'url';
 import hbs from 'hbs';
 import cors from 'cors'; // const cors = require('cors');
 import dotenv from 'dotenv';
-import usuarios  from '../routes/usuarios.js';
+import residentes  from '../routes/residentes.js';
+import  connectDB  from '../database/config.js';
+
 
 // Obtener __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);
@@ -15,7 +17,9 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
         this.paths = {};
-    
+        //conectar a base de datos
+        this.conectarDB();
+
        // Configuración del motor de vistas
         this.config();
     
@@ -25,7 +29,11 @@ class Server {
         // Rutas de mi app
         this.routes();
 
-            }
+        }
+        // Conectar a base de datos
+        async conectarDB(){
+            await connectDB();
+        };
             config() {
                 // Establecer el motor de vistas como 'hbs'
                 this.app.set('view engine', 'hbs');
@@ -51,8 +59,11 @@ class Server {
     }
     routes() {
         // this.app.use(this.paths.auth, require('../routes/auth'));
-        this.app.use('/', usuarios);
-       
+        this.app.use('/', residentes);
+       // Ruta para AddResidente.html que renderiza desde la carpeta 'views'
+        this.app.get('/addResidente', (req, res) => {
+            res.render('addResidente');  // Renderiza el archivo AddResidente.html o AddResidente.ejs desde la carpeta 'views'
+        });
     }
     
     listen() {

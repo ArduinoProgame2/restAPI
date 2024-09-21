@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a Urbani App</title>
+
+    <!-- Importar Bootstrap 5 CSS desde el CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Importar FontAwesome para el icono del menú -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Importar Google Font: Pacifico -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- Estilos personalizados -->
+    <style>
+        /* Estilos para el fondo y la tipografía */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Roboto', cursive; /* Aplicar la fuente Pacifico */
+        }
+
+        /* Fondo de pantalla con la imagen Ballena.jpg */
+        body {
+            background-image: url('images/Ballena.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Asegura que cubra toda la pantalla */
+            text-align: center;
+            flex-direction: column; /* Para alinear el contenido en columna */
+        }
+
+        /* Estilos para el texto */
+        h1 {
+            color: black; /* Color de texto negro */
+            font-size: 4rem; /* Tamaño grande del texto */
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); /* Sombra blanca para mejorar la legibilidad */
+        }
+
+        /* Estilos para el botón del menú (FontAwesome) */
+        .menu-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: black;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        /* Sidebar oculto inicialmente */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: beige;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        /* Contenido dentro del sidebar */
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: black;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
+
+        /* Cuando el sidebar esté abierto */
+        .sidebar.open {
+            width: 250px;
+        }
+
+        /* Estilos para el cierre del sidebar */
+        .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón de menú en la parte superior derecha -->
+    <i class="fas fa-bars menu-btn" onclick="openNav()"></i>
+
+    <!-- Sidebar que se desplegará al hacer clic -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <!-- Enlace al archivo AddResidente.html -->
+        <a href="/addResidente">Add Residente</a>
+        <a href="#">Consulta</a>
+    </div>
+
+    <!-- Texto centralizado -->
+    <h1>Bienvenido a Urbani App</h1>
+
+    <!-- Incluir Bootstrap 5 JS y Popper.js desde el CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script para abrir y cerrar el sidebar -->
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").classList.add("open");
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").classList.remove("open");
+        }
+    </script>
+</body>
+</html>
