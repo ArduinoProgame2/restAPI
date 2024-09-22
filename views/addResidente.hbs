@@ -8,9 +8,7 @@
     <!-- Importar Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Estilos personalizados -->
     <style>
-        /* Estilo para el cuerpo de la página */
         body, html {
             margin: 0;
             padding: 0;
@@ -18,14 +16,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: Arial, sans-serif;
             background-color: #f0f0f0;
         }
 
-        /* Estilo para el card */
         .card {
             width: 100%;
-            max-width: 600px; /* Limita el tamaño del card */
+            max-width: 700px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
@@ -37,127 +33,156 @@
             margin-bottom: 20px;
         }
 
-        /* Estilo para organizar los campos horizontalmente dentro del fieldset */
+        fieldset {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        legend {
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+
         .horizontal-group {
             display: flex;
-            gap: 15px;
             justify-content: space-between;
+            gap: 15px;
         }
 
         .horizontal-group .form-group {
             flex: 1;
         }
 
-        /* Botón de enviar */
         .btn-submit {
             width: 100%;
         }
-
-        fieldset {
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
+        .title-bar {
+            background-color: black; /* Fondo negro */
+            color: #ffc107; /* Texto amarillo */
             padding: 10px;
+            text-align: center;
+            border-radius: 5px; /* Opcional, si quieres bordes redondeados */
         }
-
-        legend {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            width: auto;
-        }
+        
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h3>Añadir Residente</h3>
+         <!-- Título estilizado con Bootstrap y estilos personalizados -->
+        <h3 class="title-bar">Añadir Residente</h3>
 
         <!-- Formulario para añadir residente -->
         <form action="/addResidente" method="POST">
+    <!-- Agrupar Cédula, Nombre y Apellidos -->
+    <fieldset>
+        <legend><strong>Informacion Personal</strong></legend>
+        <div class="horizontal-group">
+            <div class="form-group">
+                <label for="cedula" class="form-label">Cédula</label>
+                <input type="text" class="form-control" id="cedula" name="id_cedula" maxlength="10" value="{{datos.id_cedula}}" required>
+            </div>
 
-            <!-- Agrupar Cedula, Nombre y Apellidos en un fieldset -->
-            <fieldset>
-                <legend>Información Personal</legend>
-                <div class="horizontal-group">
-                    <!-- Cédula -->
-                    <div class="form-group">
-                        <label for="cedula" class="form-label">Cédula</label>
-                        <input type="text" class="form-control" id="cedula" name="id_cedula" maxlength="10" required>
-                    </div>
+            <div class="form-group">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="{{datos.nombre}}" required>
+            </div>
 
-                    <!-- Nombre -->
-                    <div class="form-group">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
-                    </div>
+            <div class="form-group">
+                <label for="apellidos" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" id="apellidos" name="apellidos" value="{{datos.apellidos}}" required>
+            </div>
+        </div>
+    </fieldset>
 
-                    <!-- Apellidos -->
-                    <div class="form-group">
-                        <label for="apellidos" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos" name="apellidos" required>
-                    </div>
-                </div>
-            </fieldset>
+    <!-- Agrupar Email, Password y Celular -->
+    <fieldset>
+        <legend><strong>Credenciales</strong></legend>
+        <div class="horizontal-group">
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{datos.email}}" required>
+            </div>
 
-            <!-- Agrupar Email, Password y Celular en un fieldset -->
-            <fieldset>
-                <legend>Credenciales</legend>
-                <div class="horizontal-group">
-                    <!-- Email -->
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" value="{{datos.password}}" required>
+            </div>
 
-                    <!-- Password -->
-                    <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
-                    </div>
+            <div class="form-group">
+                <label for="celular" class="form-label">Celular</label>
+                <input type="text" class="form-control" id="celular" name="celular" maxlength="15" value="{{datos.celular}}" required>
+            </div>
+        </div>
+    </fieldset>
 
-                    <!-- Número de celular -->
-                    <div class="form-group">
-                        <label for="celular" class="form-label">Celular</label>
-                        <input type="text" class="form-control" id="celular" name="celular" maxlength="15" required>
-                    </div>
-                </div>
-            </fieldset>
+    <!-- Agrupar Casa, Categoría y Rol -->
+    <fieldset>
+        <legend><strong>Detalles Residenciales</strong></legend>
+        <div class="horizontal-group">
+            <div class="form-group">
+                <label for="casa" class="form-label">Casa</label>
+                <input type="text" class="form-control" id="casa" name="casa" maxlength="20" value="{{datos.casa}}" required>
+            </div>
 
-            <!-- Agrupar Casa, Categoría y Rol en un fieldset -->
-            <fieldset>
-                <legend>Detalles Residenciales</legend>
-                <div class="horizontal-group">
-                    <!-- Casa -->
-                    <div class="form-group">
-                        <label for="casa" class="form-label">Casa</label>
-                        <input type="text" class="form-control" id="casa" name="casa" maxlength="20" required>
-                    </div>
+            <div class="form-group">
+                <label for="categoria" class="form-label">Categoría</label>
+                <select class="form-select" id="categoria" name="categoria" required>
+                    <option value="Propietario" {{#ifEquals datos.categoria 'Propietario'}}selected{{/ifEquals}}>Propietario</option>
+                    <option value="Inquilino" {{#ifEquals datos.categoria 'Inquilino'}}selected{{/ifEquals}}>Inquilino</option>
+                </select>
+            </div>
 
-                    <!-- Categoría (Propietario o Inquilino) -->
-                    <div class="form-group">
-                        <label for="categoria" class="form-label">Categoría</label>
-                        <select class="form-select" id="categoria" name="categoria" required>
-                            <option value="Propietario">Propietario</option>
-                            <option value="Inquilino">Inquilino</option>
-                        </select>
-                    </div>
+            <div class="form-group">
+                <label for="rol" class="form-label">Rol</label>
+                <select class="form-select" id="rol" name="rol" required>
+                    <option value="Master" {{#ifEquals datos.rol 'Master'}}selected{{/ifEquals}}>Master</option>
+                    <option value="Junior" {{#ifEquals datos.rol 'Junior'}}selected{{/ifEquals}}>Junior</option>
+                </select>
+            </div>
+        </div>
+    </fieldset>
 
-                    <!-- Rol (Master o Slave) -->
-                    <div class="form-group">
-                        <label for="rol" class="form-label">Rol</label>
-                        <select class="form-select" id="rol" name="rol" required>
-                            <option value="Master">Master</option>
-                            <option value="Junior">Junior</option>
-                        </select>
-                    </div>
-                </div>
-            </fieldset>
-
-            <!-- Botón para enviar el formulario -->
-            <button type="submit" class="btn btn-primary btn-submit">Añadir Residente</button>
-        </form>
+    <!-- Botón para enviar el formulario -->
+    <button type="submit" class="btn btn-primary btn-submit">Añadir Residente</button>
+</form>
+ <!-- Modal de error de Bootstrap -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title" id="errorModalLabel">Error</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            {{errorMessage}} <!-- Mostrar el mensaje de error aquí -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Incluir Bootstrap 5 JS desde el CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Importar Bootstrap 5 JS y Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<!-- Dialog para mostrar mensajes de error -->
+<script>
+        // Mostrar el modal si hay un error
+        const errorMessage = "{{errorMessage}}";
+        if (errorMessage) {
+            const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+            errorModal.show();
+        }
+</script>
+
 </body>
 </html>
+
+
+
+
