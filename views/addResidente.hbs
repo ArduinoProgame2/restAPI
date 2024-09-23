@@ -156,8 +156,7 @@
 
     <!-- Botón para enviar el formulario -->
     <button type="submit" class="btn btn-primary btn-submit">Añadir Residente</button>
-     <!-- Botón para resetear el formulario -->
-    <button id="resetFormButton" type="reset" class="btn btn-secondary btn-reset">Limpiar Formulario</button>
+    
 </form>
  <!-- Modal de error de Bootstrap -->
     <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
@@ -189,13 +188,22 @@
             const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
             errorModal.show();
         }
-        // Añadir evento para asegurar que el campo de contraseña también se limpie correctamente
-        document.getElementById('resetFormButton').addEventListener('click', function() {
-            // Limpiar manualmente los campos sensibles, como el de contraseña
-            setTimeout(() => {
-                document.getElementById('password').value = '';
-            }, 100);
+
+        // Cerrar el modal al hacer clic en el botón de cerrar
+        const errorModal = document.getElementById('errorModal');
+        const closeButton = errorModal.querySelector('.btn-close');
+        closeButton.addEventListener('click', () => {
+            errorModal.hide();
         });
+
+        // Cerrar el modal al hacer clic fuera de él
+        errorModal.addEventListener('click', (event) => {
+            if (event.target === errorModal) {
+                errorModal.hide();
+            }
+        });
+
+        
 </script>
 
 </body>

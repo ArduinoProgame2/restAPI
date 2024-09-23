@@ -25,7 +25,7 @@ export const datosResidente = async (req, res) => {
         if (!errors.isEmpty()) {
             return res.status(400).render('addResidente', {
                 errors: errors.array(),
-                datos: req.body, // Mantener los datos ingresados en caso de error de validación
+                //datos: req.body, // Mantener los datos ingresados en caso de error de validación
             });
         }
 
@@ -34,7 +34,10 @@ export const datosResidente = async (req, res) => {
         if (existeEmail) {
             return res.status(400).render("addResidente", {
                 errorMessage: `El correo ${req.body.email} ya existe en la base de datos.`,
-                datos: req.body, // Mantener los datos ingresados para corregir solo el campo duplicado
+                datos: {
+                    ...req.body,
+                    password: "" // Asegúrate de que el campo de contraseña no se reenvíe
+                }
             });
         }
 
