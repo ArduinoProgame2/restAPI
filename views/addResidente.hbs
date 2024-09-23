@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- Desabilitar cache del navegador-->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
     <title>Añadir Residente</title>
 
     <!-- Importar Bootstrap 5 CSS -->
@@ -64,6 +69,10 @@
             padding: 10px;
             text-align: center;
             border-radius: 5px; /* Opcional, si quieres bordes redondeados */
+        }
+        .btn-reset {
+            margin-top: 10px;
+            width: 100%;
         }
         
     </style>
@@ -147,6 +156,8 @@
 
     <!-- Botón para enviar el formulario -->
     <button type="submit" class="btn btn-primary btn-submit">Añadir Residente</button>
+     <!-- Botón para resetear el formulario -->
+    <button id="resetFormButton" type="reset" class="btn btn-secondary btn-reset">Limpiar Formulario</button>
 </form>
  <!-- Modal de error de Bootstrap -->
     <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
@@ -178,6 +189,13 @@
             const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
             errorModal.show();
         }
+        // Añadir evento para asegurar que el campo de contraseña también se limpie correctamente
+        document.getElementById('resetFormButton').addEventListener('click', function() {
+            // Limpiar manualmente los campos sensibles, como el de contraseña
+            setTimeout(() => {
+                document.getElementById('password').value = '';
+            }, 100);
+        });
 </script>
 
 </body>
